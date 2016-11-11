@@ -7,7 +7,7 @@ def wsgi_application(environment, start_response):
   qs = urlparse.parse_qs(envienvironmentron['QUERY_STRING'])
   body = ''
   for key, value in qs.iteritems():
-    body += key + '=' + value '\n'
+    body += key + '=' + value + '\n'
 
   start_response(status, headers)
   return [body]
