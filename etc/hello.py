@@ -1,9 +1,9 @@
 CONFIG = {
   'working_dir': '/home/box/web/',
   'args': (
-    '--bind=127.0.0.1:8080',
+    '--bind=0.0.0.0:8080',
     '--workers=16',
     '--timeout=60',
-    'hello.wsgi_application',
+    'hello:wsgi_application',
   ),
 }
