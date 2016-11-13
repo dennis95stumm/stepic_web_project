@@ -4,7 +4,7 @@ from django.contrib import admin
 from qa.views import test
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns('qa.views',
   # Examples:
   # url(r'^$', 'ask.views.home', name='home'),
   # url(r'^blog/', include('blog.urls')),
