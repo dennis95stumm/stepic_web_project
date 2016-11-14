@@ -13,7 +13,7 @@ class Question(models.Model):
   title = models.CharField(max_length=255)
   text = models.TextField()
   added_at = models.DateTimeField()
-  raiting = models.IntegerField()
+  rating = models.IntegerField()
   author = models.ForeignKey(User, null=True, related_name='author', on_delete=models.SET_NULL)
   likes = models.ManyToManyField(User, related_name='likes')
 
