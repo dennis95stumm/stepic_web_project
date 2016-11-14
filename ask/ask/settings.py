@@ -62,8 +62,8 @@ DATABASES = {
         'NAME': 'stepik',
         'USER': 'stepik',
         'PASSWORD': 'stepik',
-        'HOST': 'localhost',
-        'PORT': '3306'
+        #'HOST': 'localhost',
+        #'PORT': '3306'
     }
 }
 
