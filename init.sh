@@ -9,6 +9,6 @@ sudo ln -s /home/box/web/etc/ask.py /etc/gunicorn.d/ask.py
 sudo /etc/init.d/gunicorn restart
 sudo /etc/init.d/mysql start
 
-# mysql -u root -e "CREATE DATABASE stepik CHARACTER SET utf8;"
-# mysql -u root -e "CREATE USER 'stepik'@'localhost' IDENTIFIED BY 'stepik';"
-# mysql -u root -e "GRANT ALL ON stepik.* TO 'stepik'@'localhost';"
+mysql -u root -e "CREATE DATABASE IF NOT EXISTS stepik CHARACTER SET utf8;"
+mysql -u root -e "CREATE USER 'stepik'@'localhost' IDENTIFIED BY 'stepik';"
+mysql -u root -e "GRANT ALL ON stepik.* TO 'stepik'@'localhost';"
