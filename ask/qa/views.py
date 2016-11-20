@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from qa.models import Question
 from django.core.paginator import Paginator
@@ -14,7 +14,7 @@ def question_list_main(request):
   else:
     questions = Question.objects.new()
 
-  paginatior = Paginatior(questions, 10)
+  paginator = Paginator(questions, 10)
   page = paginator.page(page)
 
   return render(request, 'qa/question_main.html', {
@@ -22,7 +22,7 @@ def question_list_main(request):
     'page': page
   })
 
-def question(request, slug):
+def question_details(request, slug):
   question = get_object_or_404(Question, slug=slug)
   return render(request, 'qa/question_details.html', {
     'question': question
