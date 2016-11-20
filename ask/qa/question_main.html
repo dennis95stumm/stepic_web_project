@@ -1,0 +1,11 @@
+{% for question in questions %}
+  <a href="/question/{{ question.id }}/">{{ question.title }}</a>
+{% endfor %}
+
+{{ if page.has_previous }}
+  <a href="./?page={{ page.previous_page_number }}">Previous</a>
+{{ endif }}
+
+{{ if page.has_next }}
+  <a href="./?page={{ page.next_page_number }}">Next</a>
+{{ endif }}
