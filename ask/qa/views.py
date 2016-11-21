@@ -27,3 +27,21 @@ def question_details(request, id):
   return render(request, 'qa/question_details.html', {
     'question': question
   })
+
+def answer_add(request):
+  if request.method == "POST":
+    form = AnswerForm(request.POST)
+
+    if form.is_valid():
+      post = form.save()
+      url = post.get_url()
+      return HttpResponseRedirect(url)
+
+  else:
+    form = AnswerForm()
+  return render(request, 'qa/answer_add.html', {
+    'form': form
+  })
+
+def question_add():
+  pass
