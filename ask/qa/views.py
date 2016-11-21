@@ -22,8 +22,8 @@ def question_list_main(request):
     'page': page
   })
 
-def question_details(request, slug):
-  question = get_object_or_404(Question, slug=slug)
+def question_details(request, id):
+  question = get_object_or_404(Question, id=id)
   return render(request, 'qa/question_details.html', {
     'question': question
   })
