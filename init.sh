@@ -6,7 +6,7 @@ sudo /etc/init.d/nginx restart
 sudo ln -s /home/box/web/etc/hello.py /etc/gunicorn.d/hello.py
 sudo ln -s /home/box/web/etc/ask.py /etc/gunicorn.d/ask.py
 sudo /etc/init.d/gunicorn restart
-sudo /etc/init.d/mysql start
+sudo /etc/init.d/mysql restart
 
 mysql -u root -e "CREATE DATABASE IF NOT EXISTS stepik CHARACTER SET utf8;"
 mysql -u root -e "CREATE USER 'stepik'@'localhost' IDENTIFIED BY 'stepik';"
