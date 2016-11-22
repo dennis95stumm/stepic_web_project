@@ -4,3 +4,5 @@
 {% for answer in question.answer_set.all %}
   <p>{{ answer.text }}</p>
 {% endfor %}
+
+{{ form.as_p }}

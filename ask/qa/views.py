@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from qa.models import Question
+from qa.forms import AnswerForm, AskForm
 from django.core.paginator import Paginator
 
 def test(request, *args, **kwargs):
@@ -24,7 +25,9 @@ def question_list_main(request):
 
 def question_details(request, id):
   question = get_object_or_404(Question, id=id)
+  form = AnswerForm()
   return render(request, 'qa/question_details.html', {
+    'form': form
     'question': question
   })
 
@@ -33,8 +36,8 @@ def answer_add(request):
     form = AnswerForm(request.POST)
 
     if form.is_valid():
-      post = form.save()
-      url = post.get_url()
+      answer = form.save()
+      url = answer.get_url()
       return HttpResponseRedirect(url)
 
   else:
@@ -43,5 +46,17 @@ def answer_add(request):
     'form': form
   })
 
-def question_add():
-  pass
+def question_add(request):
+  if request.method == "POST":
+    form = AskForm(request.POST)
+
+    if form.is_valid():
+      question = form.save()
+      url = question.get_url()
+      return HttpResponseRedirect(url)
+
+  else:
+    form = AskForm()
+  return render(request, 'qa/question_add.html', {
+    'form': form
+  })
