@@ -20,7 +20,7 @@ class Question(models.Model):
   objects = QuestionManager()
 
   def get_url(self):
-    return reverse('qa:question', kwargs = { 'id': self.id })
+    return reverse('question', kwargs = { 'id': self.id})
 
 class Answer(models.Model):
   text = models.TextField()
@@ -29,4 +29,4 @@ class Answer(models.Model):
   author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
   def get_url(self):
-    return reverse('qa:question', kwargs = { 'id': self.question.id })
+    return reverse('question', kwargs = { 'id': self.question.id })
