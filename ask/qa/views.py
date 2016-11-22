@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from qa.models import Question
-from qa.forms import AnswerForm, AskForm
+from qa.forms import AnswerForm, AskForm, UserForm
+from django.contrib.auth import login
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 
 def test(request, *args, **kwargs):
@@ -60,3 +62,19 @@ def question_add(request):
   return render(request, 'qa/question_add.html', {
     'form': form
   })
+
+def sign_up(request):
+  if request.method == "POST":
+    form = UserForm(request.Post)
+    if form.is_valid():
+      user = User.objects.create(**form.cleaned_data)
+      login(user)
+      return HttpResponseRedirect('/')
+  else:
+    form = UserForm()
+  return render(request, 'qa/sign_up.html', {
+    'form': form
+  })
+
+def login(request):
+  pass

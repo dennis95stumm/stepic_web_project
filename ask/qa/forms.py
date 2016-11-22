@@ -1,5 +1,6 @@
 from django import forms
 from qa.models import Question, Answer
+from django.contrib.auth.models import User
 
 class AskForm(forms.Form):
   title = forms.CharField(max_length=255)
@@ -31,3 +32,8 @@ class AnswerForm(forms.Form):
     answer = Answer(**self.cleaned_data)
     answer.save()
     return answer
+
+class UserForm(forms.Form):
+  class Meta:
+    model = User
+    fields = ('username', 'email', 'password')
