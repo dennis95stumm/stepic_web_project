@@ -5,4 +5,10 @@
   <p>{{ answer.text }}</p>
 {% endfor %}
 
-{{ form.as_p }}
+<form action="/answer" method="POST">
+  {% csrf_token %}
+  <p>
+    {{ form.as_p }}
+  </p>
+  <input type="submit" value="Save" />
+</form>
