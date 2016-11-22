@@ -27,7 +27,7 @@ def question_details(request, id):
   question = get_object_or_404(Question, id=id)
   form = AnswerForm()
   return render(request, 'qa/question_details.html', {
-    'form': form
+    'form': form,
     'question': question
   })
 
