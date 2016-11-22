@@ -5,11 +5,11 @@ class AskForm(forms.Form):
   title = forms.CharField(max_length=255)
   text = forms.CharField(widget=forms.Textarea)
 
-  def __init__(self, **kwargs):
-    super(AskForm, self).__init__(**kwargs)
+  def __init__(self, *args, **kwargs):
+    super(AskForm, self).__init__(*args, **kwargs)
 
   def clean(self):
-    pass
+    return self.cleaned_data
 
   def save(self):
     question = Question(**self.cleaned_data)
@@ -21,11 +21,11 @@ class AnswerForm(forms.Form):
   text = forms.CharField(widget=forms.Textarea)
   question = forms.ModelChoiceField(queryset = Question.objects.all() )
 
-  def __init__(self, **kwargs):
-    super(AnswerForm, self).__init__(**kwargs)
+  def __init__(self, *args, **kwargs):
+    super(AnswerForm, self).__init__(*args, **kwargs)
 
   def clean(self):
-    pass
+    return self.cleaned_data
 
   def save(self):
     answer = Answer(**self.cleaned_data)
