@@ -36,7 +36,7 @@ def question_details(request, id):
 def answer_add(request):
   if request.method == "POST":
     form = AnswerForm(request.POST)
-    form.author = request.user
+    form._user = request.user
 
     if form.is_valid():
       answer = form.save()
@@ -52,7 +52,7 @@ def answer_add(request):
 def question_add(request):
   if request.method == "POST":
     form = AskForm(request.POST)
-    form.author = request.user
+    form._user = request.user
 
     if form.is_valid():
       question = form.save()
@@ -70,9 +70,7 @@ def sign_up(request):
     form = UserForm(request.POST)
     if form.is_valid():
       user = form.save()
-      user = authenticate(
-        username=user.username,
-        password=user.password)
+      user = authenticate(**form.cleaned_data)
       login(request, user)
       return HttpResponseRedirect('/')
   else:
