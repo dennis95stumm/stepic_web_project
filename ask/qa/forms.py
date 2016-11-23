@@ -33,7 +33,7 @@ class AnswerForm(forms.Form):
     answer.save()
     return answer
 
-class UserForm(forms.Form):
+class UserForm(forms.ModelForm):
   class Meta:
     model = User
     fields = ('username', 'email', 'password')
