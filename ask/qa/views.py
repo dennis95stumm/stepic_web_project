@@ -75,6 +75,3 @@ def sign_up(request):
   return render(request, 'qa/sign_up.html', {
     'form': form
   })
-
-def login(request):
-  pass
